@@ -1,10 +1,10 @@
 # Instagram video scrubbing
 
+![src/icon.png](src/icon.png)
+
 ## About the extension
 
 Instagram likely has the world's largest store of acrobatic videos. This extension aims to provide scrubbing functionality, allowing wannabe acrobats (like myself) to review some of the amazing footage that gets posted everyday.
-
-![src/icon.png](src/icon.png)
 
 ## Get set up
 
