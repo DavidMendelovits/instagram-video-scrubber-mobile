@@ -11,10 +11,6 @@
   "icons": {
     "128": "icon.png"
   },
-  "web_accessible_resources": [
-    "<all_urls>",
-    "./content_script.js"
-  ],
   "content_scripts": [{
     "matches": [
       "https://www.instagram.com/*"

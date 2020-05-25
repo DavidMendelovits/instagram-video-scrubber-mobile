@@ -41,7 +41,12 @@ function handleScrubbing (e) {
 function transformVideo (el) {
 	if (!el) { return false }
     el.style.zIndex = 100
-    el.controls = true
+	el.controls = true
+	el.loop = false
+	el.autoplay = false
+	el.onended = (e) => {
+		el.pause()
+	}
 	el.muted = true
 	el.onclick = handleScrubbing
 	el.ontouchstart = handleScrubbing
