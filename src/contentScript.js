@@ -6,7 +6,6 @@ function getZone (middleX, middleY, inX, inY) {
     }
 	const top = (inY < middleY)
 	const left = (inX < middleX)
- 
 	if (top) {
 	  return (left) ? 1 : 2
 	} else {
@@ -31,28 +30,28 @@ function scrub (target, zone) {
 function handleScrubbing (e) {
 	e.preventDefault()
 	let interface = (e.touches) ? e.touches[0] : e
-
 	let videoBorderInfo = e.target.getBoundingClientRect()
 	let middleY = videoBorderInfo.y + (videoBorderInfo.height / 2)
 	let middleX = videoBorderInfo.x + (videoBorderInfo.width / 2)
 	let zone = getZone(middleX, middleY, interface.clientX, interface.clientY)
-
 	scrub(e.target, zone)
+	return (true)
 }
 
-function transformVideo (el, mobile) {
-	if (!el) {return null}
+function transformVideo (el) {
+	if (!el) { return false }
     el.style.zIndex = 100
     el.controls = true
-    el.muted = true
-    el.ontouchstart = handleScrubbing
+	el.muted = true
 	el.onclick = handleScrubbing
+	el.ontouchstart = handleScrubbing
+	return true
   }
 
 window.addEventListener('click', (e) => {
     if (e.target.className === 'fXIG0') {
-       if (!transformVideo(e.target.offsetParent.children[0].childNodes[0].children[0].children[0]), window.mobileAndTabletCheck()) {
-		   console.log('failed to init video scrubber')
-	   }
+    	if (!transformVideo(e.target.offsetParent.children[0].childNodes[0].children[0].children[0])) {
+			console.log('failed to init video scrubber')
+	    }
     }
 })
